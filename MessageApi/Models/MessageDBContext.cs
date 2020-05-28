@@ -21,8 +21,12 @@ namespace MessageApi.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=msg-db;Database=MessageDB;User Id=sa;Password=P@ssw0rd;");
+                var dbServer = Environment.GetEnvironmentVariable("DB_SERVER");
+                var dbName = Environment.GetEnvironmentVariable("DB_NAME");
+                var dbUser = Environment.GetEnvironmentVariable("DB_USER");
+                var dbPassword = Environment.GetEnvironmentVariable("DB_PASSWORD");
+                var connectionString = $"Server={dbServer};Database={dbName};User Id={dbUser};Password={dbPassword};";
+                optionsBuilder.UseSqlServer(connectionString);
             }
         }
 
