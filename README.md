@@ -1,4 +1,4 @@
-# simple-message-backend
+# simple-message-api
 Simple RESTful API with . NET Core
 
 ## Build and run the Docker image
