@@ -10,7 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-
+using MessageApi.Models;
 namespace MessageApi
 {
     public class Startup
@@ -26,6 +26,7 @@ namespace MessageApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddDbContext<MessageDBContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
