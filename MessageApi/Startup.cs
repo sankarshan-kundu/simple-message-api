@@ -15,6 +15,7 @@ namespace MessageApi
 {
     public class Startup
     {
+        readonly string AllowAllPolicy = "_allowAllPolicy";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -27,6 +28,10 @@ namespace MessageApi
         {
             services.AddControllers();
             services.AddDbContext<MessageDBContext>();
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: AllowAllPolicy, builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,6 +45,8 @@ namespace MessageApi
             // app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(AllowAllPolicy);
 
             app.UseAuthorization();
 
