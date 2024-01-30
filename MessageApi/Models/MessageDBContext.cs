@@ -25,7 +25,7 @@ namespace MessageApi.Models
                 var dbName = Environment.GetEnvironmentVariable("DB_NAME");
                 var dbUser = Environment.GetEnvironmentVariable("DB_USER");
                 var dbPassword = Environment.GetEnvironmentVariable("DB_PASSWORD");
-                var connectionString = $"Server={dbServer};Database={dbName};User Id={dbUser};Password={dbPassword};";
+                var connectionString = $"Server={dbServer};Database={dbName};User Id={dbUser};Password={dbPassword};Encrypt=False";
                 optionsBuilder.UseSqlServer(connectionString);
             }
         }
